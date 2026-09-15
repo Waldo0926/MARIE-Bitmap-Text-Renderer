@@ -1,0 +1,128 @@
+/ MARIE bitmap framebuffer demonstration.
+/ Post-course reimplementation: this file is not based on the original assessment template.
+/
+/ Display model assumed by MARIE simulator:
+/   16 x 16 words at 0F00..0FFF
+/ Each glyph is 4 x 8 = 32 words, row-major.
+/
+/ The core idea is deliberately small: clear the framebuffer, then copy a 4x8 glyph
+/ into display memory via indirect addressing. The Python reference model demonstrates
+/ complete multi-character layout and wrapping.
+
+        JnS ClearDisplay
+
+/ Paint a sample H at the top-left corner.
+        Load GlyphHAddr
+        Store GlyphPtr
+        Load DisplayBase
+        Store DisplayPtr
+        JnS PaintGlyph
+
+        Halt
+
+/ ------------------------------------------------------------------
+/ ClearDisplay: fill 0F00..0FFF with FFFF (background)
+ClearDisplay, HEX 0000
+        Load DisplayBase
+        Store ClearPtr
+ClearLoop, Load Background
+        StoreI ClearPtr
+        Load ClearPtr
+        Add One
+        Store ClearPtr
+        Load ClearPtr
+        Subt DisplayEndPlusOne
+        Skipcond 400
+        Jump ClearLoop
+        JumpI ClearDisplay
+
+/ ------------------------------------------------------------------
+/ PaintGlyph: copy a 4x8 row-major glyph to the framebuffer.
+/ Inputs: GlyphPtr and DisplayPtr.
+/ After each 4-pixel row, advance 12 extra words because display width is 16.
+PaintGlyph, HEX 0000
+        Clear
+        Store PixelCount
+        Clear
+        Store ColumnCount
+PaintLoop, LoadI GlyphPtr
+        StoreI DisplayPtr
+
+        Load GlyphPtr
+        Add One
+        Store GlyphPtr
+
+        Load DisplayPtr
+        Add One
+        Store DisplayPtr
+
+        Load ColumnCount
+        Add One
+        Store ColumnCount
+        Subt Four
+        Skipcond 400
+        Jump SkipRowAdvance
+
+        Clear
+        Store ColumnCount
+        Load DisplayPtr
+        Add Twelve
+        Store DisplayPtr
+
+SkipRowAdvance, Load PixelCount
+        Add One
+        Store PixelCount
+        Subt ThirtyTwo
+        Skipcond 400
+        Jump PaintLoop
+        JumpI PaintGlyph
+
+/ ------------------------------------------------------------------
+DisplayBase, HEX 0F00
+DisplayEndPlusOne, HEX 1000
+Background, HEX FFFF
+One, DEC 1
+Four, DEC 4
+Twelve, DEC 12
+ThirtyTwo, DEC 32
+ClearPtr, HEX 0000
+GlyphPtr, HEX 0000
+DisplayPtr, HEX 0000
+PixelCount, DEC 0
+ColumnCount, DEC 0
+
+/ A single self-contained H glyph for the assembly demo.
+/ Foreground uses F00F; background uses 0000.
+GlyphH, HEX F00F
+        HEX 0000
+        HEX 0000
+        HEX F00F
+        HEX F00F
+        HEX 0000
+        HEX 0000
+        HEX F00F
+        HEX F00F
+        HEX 0000
+        HEX 0000
+        HEX F00F
+        HEX F00F
+        HEX F00F
+        HEX F00F
+        HEX F00F
+        HEX F00F
+        HEX 0000
+        HEX 0000
+        HEX F00F
+        HEX F00F
+        HEX 0000
+        HEX 0000
+        HEX F00F
+        HEX F00F
+        HEX 0000
+        HEX 0000
+        HEX F00F
+        HEX 0000
+        HEX 0000
+        HEX 0000
+        HEX 0000
+GlyphHAddr, ADR GlyphH
