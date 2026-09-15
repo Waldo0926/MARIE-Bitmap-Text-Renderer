@@ -1,5 +1,10 @@
 # MARIE 位图文字渲染器
 
+[![类型](https://img.shields.io/badge/%E7%B1%BB%E5%9E%8B-%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A-2563eb?style=for-the-badge)](#)
+[![技术](https://img.shields.io/badge/%E6%8A%80%E6%9C%AF-MARIE_%C2%B7_Python-7c3aed?style=for-the-badge)](#)
+[![许可证](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF%E8%AF%81-MIT-16a34a?style=for-the-badge)](LICENSE)
+
+
 [English](README.md)
 
 这是一个课程结束后重新实现的低层图形项目，用于展示 **MARIE 汇编、间接寻址、指针、子程序、位图字体以及 16×16 memory-mapped framebuffer**。
