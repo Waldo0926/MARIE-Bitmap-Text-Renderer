@@ -1,5 +1,10 @@
 # MARIE Bitmap Text Renderer
 
+[![Type](https://img.shields.io/badge/Type-Coursework-2563eb?style=for-the-badge)](#)
+[![Tech](https://img.shields.io/badge/Tech-MARIE_%C2%B7_Python-7c3aed?style=for-the-badge)](#)
+[![License](https://img.shields.io/badge/License-MIT-16a34a?style=for-the-badge)](LICENSE)
+
+
 [简体中文](README.zh-CN.md)
 
 A post-course low-level graphics project demonstrating **MARIE assembly, indirect addressing, pointers, subroutines, bitmap fonts, and a memory-mapped 16×16 framebuffer**.
