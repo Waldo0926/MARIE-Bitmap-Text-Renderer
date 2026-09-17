@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/badge/License-MIT-16a34a?style=for-the-badge)](LICENSE)
 
 
-[简体中文](README.zh-CN.md)
+**English** · [中文](README.zh-CN.md)
 
 A post-course low-level graphics project demonstrating **MARIE assembly, indirect addressing, pointers, subroutines, bitmap fonts, and a memory-mapped 16×16 framebuffer**.
 
