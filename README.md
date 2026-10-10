@@ -31,11 +31,11 @@ At the end of each four-pixel glyph row, the destination pointer advances anothe
 
 ## What's included
 
-- `assembly/renderer.mas` — a clean, standalone MARIE core example that clears the display and paints a glyph using indirect addressing;
-- `font/glyphs.json` — an original 4×8 A–Z bitmap font;
-- `src/reference_renderer.py` — executable Python reference model for six-character, two-row text layout;
-- `scripts/generate_font_data.py` — converts the JSON font into MARIE `HEX` data words;
-- `scripts/render_demo.py` — renders `HELLO` as a deterministic ASCII framebuffer;
+- `assembly/renderer.mas`: a clean, standalone MARIE core example that clears the display and paints a glyph using indirect addressing;
+- `font/glyphs.json`: an original 4×8 A–Z bitmap font;
+- `src/reference_renderer.py`: executable Python reference model for six-character, two-row text layout;
+- `scripts/generate_font_data.py`: converts the JSON font into MARIE `HEX` data words;
+- `scripts/render_demo.py`: renders `HELLO` as a deterministic ASCII framebuffer;
 - unit tests and GitHub Actions CI.
 
 ## Demo

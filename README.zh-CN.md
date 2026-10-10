@@ -5,7 +5,7 @@
 [![许可证](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF%E8%AF%81-MIT-16a34a?style=for-the-badge)](LICENSE)
 
 
-[English](README.md)
+[English](README.md) · **中文**
 
 这是一个课程结束后重新实现的低层图形项目，用于展示 **MARIE 汇编、间接寻址、指针、子程序、位图字体以及 16×16 memory-mapped framebuffer**。
 
